@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "Sorry not tested/implemented yet!"
+set -o xtrace
+
+cat /proc/sys/net/ipv4/ip_forward
+
+echo "net.ipv4.ip_forward = 1"  >> /etc/sysctl.conf
+sysctl -p
+
+cat /proc/sys/net/ipv4/ip_forward
+
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
