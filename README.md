@@ -26,7 +26,7 @@ clone than copy to bin select one of:
   Test; cp $HOME/.ssh/id_rsa.pub $HOME/.ssh/authorized_keys -> dann sollte ssh localhost ohne password gehen.
 * den key des servers known_hosts auf den client (sicher?) transportieren.
   
-Branches?:
+# Branches?:
 * main # Kontrolle mit dem Original
 * original-fai-conf # Das original mit dem ich gestartet bin.
 * check # nur mal um was auszuprobieren
