@@ -13,7 +13,8 @@ clone than copy to bin select one of:
 # Ideen für Test@EKF
 * Netzwerk boot test mit FAI in seperatem VLAN!
 * Schön wäre wenn man auch seperate FAI Server schnell bereitstellen könnte.
-* debian live mit boot toram als schneller Test. 
+* debian live mit boot toram als schneller Test.
+* Die clients können per ssh/ansible gemanaged werden. Und sollten sich beim managed Server melden das Sie gemanaged werden möchten. 
 
 # Ideen für FAI
 * kleinere Files um besser debuggen zu können.
