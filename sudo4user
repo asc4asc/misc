@@ -1,4 +1,5 @@
 #!/bin/bash
+set -o xtrace
 tmp=_tmp$$
 
 echo "Make this user easy to become root"
