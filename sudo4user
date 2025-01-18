@@ -3,6 +3,6 @@
 echo "Make this user easy to become root"
 echo $USER 
 ls /etc/sudoers.d
-echo "Sorry not implemented yet!"
-
-
+sudo echo ${USER} "ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/sudo4${USER}
+echo "Sorry not tested/implemented yet!"
+echo "remove with simple rm /etc/sudoers.d/sudo4${USER}"
