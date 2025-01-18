@@ -19,3 +19,5 @@ clone than copy to bin select one of:
 * kleinere Files um besser debuggen zu können.
 * zusätzliche sripte über github bereitstellen um halb fertiges zu unterstützen.
 * Um einfacher in scripten mit dem Netz umzugehen will ich GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0" nutzen. Speziell in virtuellen Maschinen macht das Sinn.
+* Um ein einfachen login an der Konsole zu bekommen kann man diese tool benutzen: - sudo ./make-auto-login-console ${USER} - Auch sinnvoll wenn man kein Passwort im source moechte. Alternativ ein login per ssh mit key erlauben.
+  
