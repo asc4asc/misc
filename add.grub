@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Please edit grub.conf a helper line you found at the end of the file."
+echo 'GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"' >>/etc/default/grub
+echo "I Update /etc/default/grub please call sudo update-grub"
