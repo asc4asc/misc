@@ -4,13 +4,12 @@ Some scripts an notes for quick use in my linux debian projects.
 
 # Idea:
 clone than copy to bin select one of:
-* /user/local/bin
-* /user/local/sbin
+* /usr/local/bin
+* /usr/local/sbin
 * $HOME/bin (create bin!)
 * /root/bin ??????
 
-
-# Ideen für Test@EKF
+# Ideen für Test/Hardware (intern)
 * Netzwerk boot test mit FAI in seperatem VLAN!
 * Schön wäre wenn man auch seperate FAI Server schnell bereitstellen könnte.
 * debian live mit boot toram als schneller Test.
@@ -27,3 +26,10 @@ clone than copy to bin select one of:
   Test; cp $HOME/.ssh/id_rsa.pub $HOME/.ssh/authorized_keys -> dann sollte ssh localhost ohne password gehen.
 * den key des servers known_hosts auf den client (sicher?) transportieren.
   
+Branches?:
+* main # Kontrolle mit dem Original
+* original-fai-conf # Das original mit dem ich gestartet bin.
+* check # nur mal um was auszuprobieren
+* router # Hier sollten zwei Interfaces mit masq .... für ein neues Netz gebaut werden. Zusammenspiel mit faiserver so einfach wie möglich.
+* min4debian? # idee um Struktur zu verbessern
+* max_min? # sollte ein sehr einfaches aber installiertes System ergeben.
