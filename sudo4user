@@ -1,8 +1,12 @@
 #!/bin/bash
+tmp=_tmp$$
 
 echo "Make this user easy to become root"
 echo $USER 
 ls /etc/sudoers.d
-sudo echo ${USER} "ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/sudo4${USER}
+sudo echo ${USER} "ALL=(ALL) NOPASSWD:ALL" >${tmp}
+sudo cp ${tmp} /etc/sudoers.d/sudo4${USER}
+rm ${tmp}
 echo "Sorry not tested/implemented yet!"
+ls /etc/sudoers.d
 echo "remove with simple rm /etc/sudoers.d/sudo4${USER}"
