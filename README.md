@@ -22,3 +22,8 @@ clone than copy to bin select one of:
 * Um einfacher in scripten mit dem Netz umzugehen will ich GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0" nutzen. Speziell in virtuellen Maschinen macht das Sinn.
 * Um ein einfachen login an der Konsole zu bekommen kann man diese tool benutzen: - sudo ./make-auto-login-console ${USER} - Auch sinnvoll wenn man kein Passwort im source moechte. Alternativ ein login per ssh mit key erlauben.
   
+# ssh / Aufgabe
+* den ssh pub key fom server und/oder git-hub/lab in das file ./ssh/autoisised keys im Zielrechner transportieren. z.b id_rsa.pub --> authorized_keys
+  Test; cp $HOME/.ssh/id_rsa.pub $HOME/.ssh/authorized_keys -> dann sollte ssh localhost ohne password gehen.
+* den key des servers known_hosts auf den client (sicher?) transportieren.
+  
