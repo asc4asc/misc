@@ -1,6 +1,6 @@
 # misc (sorry German/Englisch mix :-( )
 
-Check:
+# Check !!!:
 * Classic Ethernet auch einfach in debconf zu setzen? Statt mit grub file und .....?
 
 Some scripts an notes for quick use in my linux debian projects. 
