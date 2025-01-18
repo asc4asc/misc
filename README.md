@@ -18,4 +18,4 @@ clone than copy to bin select one of:
 # Ideen für FAI
 * kleinere Files um besser debuggen zu können.
 * zusätzliche sripte über github bereitstellen um halb fertiges zu unterstützen.
-
+* Um einfacher in scripten mit dem Netz umzugehen will ich GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0" nutzen. Speziell in virtuellen Maschinen macht das Sinn.
