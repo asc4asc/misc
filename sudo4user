@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Make this user easy to become root"
+echo $USER 
+ls /etc/sudoers.d
+echo "Sorry not implemented yet!"
+
+
