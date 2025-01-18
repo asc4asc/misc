@@ -10,3 +10,6 @@ sysctl -p
 cat /proc/sys/net/ipv4/ip_forward
 
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables-save > /etc/iptables/rules.v4
+
+iptables -t nat -L
