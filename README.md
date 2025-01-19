@@ -1,6 +1,6 @@
 # misc (sorry German/Englisch mix :-( )
 
-# Check !!!:
+# Check !!!: In branch min4debian
 * Classic Ethernet auch einfach in debconf zu setzen? Statt mit grub file und .....?
 * Komme ich ohne debian/30-interface aus? mit networkmanager? Das script erstmal als normales script zum debuggen kopieren?
 
