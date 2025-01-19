@@ -13,3 +13,8 @@ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 sudo iptables-save > /etc/iptables/rules.v4
 
 iptables -t nat -L
+
+# bei live braucht man leider noch eine /etc/rc.local 
+echo "#!/bin/bash"  >> /etc/rc.local
+echo "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE"  >> /etc/rc.local
+
