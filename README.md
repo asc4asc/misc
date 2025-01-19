@@ -27,6 +27,8 @@ clone than copy to bin select one of:
 * Um ein einfachen login an der Konsole zu bekommen kann man diese tool benutzen: - sudo ./make-auto-login-console ${USER} - Auch sinnvoll wenn man kein Passwort im source moechte. Alternativ ein login per ssh mit key erlauben.
   
 # ssh / Aufgabe
+* key für user ansible anlegen. Ohne passprase
+* Idee: Später kann sich ansible nicht direkt in den Server einloggen sonden nur über user dann ssh oder sudo mal sehen was da passt. 
 * den ssh pub key fom server und/oder git-hub/lab in das file ./ssh/autoisised keys im Zielrechner transportieren. z.b id_rsa.pub --> authorized_keys
   Test; cp $HOME/.ssh/id_rsa.pub $HOME/.ssh/authorized_keys -> dann sollte ssh localhost ohne password gehen.
 * den key des servers known_hosts auf den client (sicher?) transportieren.
