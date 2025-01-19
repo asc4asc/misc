@@ -3,7 +3,8 @@
 # Check !!!: In branch min4debian
 * Classic Ethernet auch einfach in debconf zu setzen? Statt mit grub file und .....?
 * Komme ich ohne debian/30-interface aus? mit networkmanager? Das script erstmal als normales script zum debuggen kopieren?
-
+* router setup masq ... einfach mal mit debian live machen.
+  
 Some scripts an notes for quick use in my linux debian projects. 
 
 # Idea:
