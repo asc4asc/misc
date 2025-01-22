@@ -1,9 +1,7 @@
 # misc (sorry German/Englisch mix :-( )
 
-# Check !!!: In branch min4debian
-* Classic Ethernet auch einfach in debconf zu setzen? Statt mit grub file und .....?
-* Komme ich ohne debian/30-interface aus? mit networkmanager? Das script erstmal als normales script zum debuggen kopieren?
-  Start mit networkmanager statt dhcp in files.
+# Make
+fai-chboot als Befehl mit sudo aufnehmen in home comands!
   
 Scripte sind aus dem Project Test CD mit linux debian live. Sollten auch beidseitig benutzt werden koennen wenn moeglich und nicht zu kompliziert. 
 
