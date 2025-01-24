@@ -1,0 +1,2 @@
+#!/bin/bash
+[ $(tty) == /dev/tty1 ] && run-parts autostart.dir/
