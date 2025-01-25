@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# copyright Andreas Schockenhoff 2001-2025, asc@ekf.de
+
+error=0; trap 'error=$(($?>$error?$?:$error))' ERR # save maximum error code
+
+#cat <<'EOF' > $target/usr/local/sbin/make1.eth1
+cat <<'EOF' > $HOME/.bash_aliases
+alias menu='echo $PATH | grep :.$ > /dev/null || PATH=$PATH:. && cat menu.txt'  
+EOF
+
+exit $error
