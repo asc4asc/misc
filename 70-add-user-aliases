@@ -4,9 +4,12 @@
 
 error=0; trap 'error=$(($?>$error?$?:$error))' ERR # save maximum error code
 
-#cat <<'EOF' > $target/usr/local/sbin/make1.eth1
-cat <<'EOF' > $HOME/.bash_aliases
+cat <<'EOF' > $target/home/${username}/.bash_aliases
 alias menu='echo $PATH | grep :.$ > /dev/null || PATH=$PATH:. && cat menu.txt'  
+EOF
+
+cat <<'EOF' > $target/home/${username}/menu.txt
+This is a help test for the Menu in this Path.
 EOF
 
 exit $error
