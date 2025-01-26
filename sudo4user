@@ -28,8 +28,6 @@ function make_sudo_login() {
 function rm_sudo_login() {
   if [[ -f /etc/sudoers.d/sudo4$USER ]]; then	  
     if [[ $verbose ]]; then 
-      echo "File sudo4$user in /etc/sudoers.de/ does not exist." 
-    else
       echo "File sudo4$USER in /etc/sudoers.de/ for $USER is removed." 
       ls /etc/sudoers.d
     fi
