@@ -4,6 +4,8 @@
 ```
 systemctl set-default multi-user.target # Grafik aus.
 systemctl set-default graphical.target # Grafik wieder ein.
+
+Auf der Konsole geht auch immer noch startx um in die Grafik zu kommen.
 ``` 
 # Make
 fai-chboot als Befehl mit sudo aufnehmen in home comands!
