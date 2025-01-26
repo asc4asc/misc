@@ -1,5 +1,9 @@
 # misc (sorry German/Englisch mix :-( )
 
+# Grafik
+systemctl set-default multi-user.target # Grafik aus.
+systemctl set-default graphical.target # Grafik wieder ein.
+ 
 # Make
 fai-chboot als Befehl mit sudo aufnehmen in home comands!
   
