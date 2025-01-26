@@ -8,6 +8,14 @@ systemctl set-default graphical.target # Grafik wieder ein.
 Auf der Konsole geht auch immer noch ```startx``` um in die Grafik zu kommen.
 
 In der Grafik kommt man mit: ``` gnome-session-quit --logout --force ``` wieder zurueck.
+
+# Nur Gnome installieren ohne Beiwerk wie GDM3 ....
+```
+$ cat /etc/apt/apt.conf
+APT::Install-Recommends "0";
+APT::Install-Suggests "0";
+```
+Erstmal nur Suggests disable. 
  
 # Make
 fai-chboot als Befehl mit sudo aufnehmen in home comands!
