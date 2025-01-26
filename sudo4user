@@ -1,13 +1,87 @@
 #!/bin/bash
-set -o xtrace
-tmp=_tmp$$
+# Short tool for enable auto sudo of user. 
+# also remove auto sudo if needed. 
 
-echo "Make this user easy to become root"
-echo $USER 
-ls /etc/sudoers.d
-sudo echo ${USER} "ALL=(ALL) NOPASSWD:ALL" >${tmp}
-sudo cp ${tmp} /etc/sudoers.d/sudo4${USER}
-rm ${tmp}
-echo "Sorry not tested/implemented yet!"
-ls /etc/sudoers.d
-echo "remove with simple rm /etc/sudoers.d/sudo4${USER}"
+error=0; trap 'error=$(($?>$error?$?:$error))' ERR # save maximum error code
+
+export LANG=C
+TTY=1
+REMOVE_FLAG=0
+
+function make_sudo_login() {
+#  set -o xtrace
+  tmp=_tmp$$
+  if [[ $verbose ]]; then 
+    if [[ -f /etc/sudoers.d/sudo4$USER ]]; then	  
+      echo "File sudo4$user in /etc/sudoers.de/ allready exists." 
+    else
+      echo "File sudo4$USER in /etc/sudoers.de/ for $USER is created." 
+      ls /etc/sudoers.d
+    fi
+  fi
+  sudo echo ${USER} "ALL=(ALL) NOPASSWD:ALL" >${tmp}
+  sudo cp ${tmp} /etc/sudoers.d/sudo4${USER}
+  rm ${tmp}
+  # ls /etc/sudoers.d
+}
+
+function rm_sudo_login() {
+  if [[ -f /etc/sudoers.d/sudo4$USER ]]; then	  
+    if [[ $verbose ]]; then 
+      echo "File sudo4$user in /etc/sudoers.de/ does not exist." 
+    else
+      echo "File sudo4$USER in /etc/sudoers.de/ for $USER is removed." 
+      ls /etc/sudoers.d
+    fi
+    sudo rm /etc/sudoers.d/sudo4${USER}
+    if [[ $verbose ]]; then 
+      echo "remove with simple rm /etc/sudoers.d/sudo4${USER}"
+      ls /etc/sudoers.d
+    fi
+  else 
+    if [[ $verbose ]]; then 
+      echo "File sudo4$user in /etc/sudoers.de/ does not exist." 
+    fi
+  fi
+#  exit 0;
+}
+
+usage() {
+
+    cat <<-EOF
+	Make this user easy to become root
+	Copyright (C) 2024 Andreas Schockenhoff EKF Elektronik GmbH
+	Report bugs to <asc@ekf.de>.
+	Usage: $0 [OPTIONS] 
+	-e enable sudo
+	-d remove sudo
+	-r remove sudo
+EOF
+exit 0
+}
+
+options=$@ # save all options
+
+# Parse commandline options
+while getopts "edrvh?t:" opt ; do
+    case "$opt" in
+	r|d)	REMOVE_FLAG=1 ;;
+	e)	REMOVE_FLAG=0 ;;
+	v)	verbose=1 v=-v ;;
+	h)	usage ;;
+	?)	usage ;;
+    esac
+done
+shift $(($OPTIND-1))
+
+USERIN="root"
+[ $1 ] && USERIN=$1
+
+if [[ ${REMOVE_FLAG} == 0 ]] 
+then  
+	make_sudo_login
+else 
+	rm_sudo_login 
+fi
+
+exit $error
