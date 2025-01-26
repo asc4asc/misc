@@ -1,2 +1,4 @@
 #!/bin/bash
+# put this into .profile? 
 [ $(tty) == /dev/tty1 ] && run-parts autostart.dir/
+echo '# [ $(tty) == /dev/tty1 ] && run-parts autostart.dir/' >> ${HOME}/.profile
