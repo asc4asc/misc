@@ -23,6 +23,7 @@ function make_sudo_login() {
   fi
   sudo echo ${USER} "ALL=(ALL) NOPASSWD:ALL" >${tmp}
   sudo cp ${tmp} /etc/sudoers.d/sudo4${USER}
+  sudo chmod 0440 /etc/sudoers.d/sudo4${USER}
   rm ${tmp}
   if [[ $verbose ]]; then 
     echo "File sudo4$USER in /etc/sudoers.de/ for $USER created!" 
