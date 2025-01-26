@@ -15,7 +15,14 @@ $ cat /etc/apt/apt.conf
 APT::Install-Recommends "0";
 APT::Install-Suggests "0";
 ```
-Erstmal nur Suggests disable. 
+Erstmal nur Suggests disable.
+
+Danach kannst du Stück für Stück die einzelnen Desktop-Komponenten installieren oder du nimmst gnome-"core" und verfährst wie im Bugreport beschrieben:
+Code: Alles auswählen
+```
+aptitude unmarkauto ~R^gnome-core$
+aptitude remove gnome-core
+```
  
 # Make
 fai-chboot als Befehl mit sudo aufnehmen in home comands!
