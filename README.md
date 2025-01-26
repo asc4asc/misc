@@ -5,7 +5,7 @@
 systemctl set-default multi-user.target # Grafik aus.
 systemctl set-default graphical.target # Grafik wieder ein.
 ```
-Auf der Konsole geht auch immer noch startx um in die Grafik zu kommen.
+Auf der Konsole geht auch immer noch ```startx``` um in die Grafik zu kommen.
 
 In der Grafik kommt man mit: ``` gnome-session-quit --logout --force ``` wieder zurueck.
  
