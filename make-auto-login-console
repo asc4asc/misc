@@ -28,7 +28,7 @@ usage() {
 	Install a autologin for a Linux Console.
 	Copyright (C) 2016 Andreas Schockenhoff EKF Elektronik GmbH
 	Report bugs to <asc@ekf.de>.
-	Usage: $0 [OPTIONS] 
+	Usage: $0 [OPTIONS] [<user>] 
 	-t Number of the tty terminal. Default is 1.  
 	-e enable autologin
 	-d remove autologin
