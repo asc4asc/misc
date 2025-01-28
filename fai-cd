@@ -2,7 +2,7 @@
 
 Create a partitial mirror containing the packages needed (16s needed)
 
-fai-mirror -m9999  -xDEFAULT,DEMO, /srv/mirror
+fai-mirror -m9999  -xFAIBASE,DEFAULT,DEMO,DEBUG /srv/mirror
 
 Create the ISO image (run this as root)
 
