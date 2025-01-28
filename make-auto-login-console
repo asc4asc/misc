@@ -52,7 +52,7 @@ while getopts "edrvh?t:" opt ; do
 done
 shift $(($OPTIND-1))
 
-USERIN="root"
+USERIN=${SUDO_USER}
 [ $1 ] && USERIN=$1
 
 if [[ ${REMOVE_FLAG} == 0 ]] 
