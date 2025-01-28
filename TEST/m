@@ -1,0 +1,32 @@
+#!/bin/bash
+board=$(sudo dmidecode -s baseboard-product-name) 
+now=$(date +"%Y-%m-%d")
+sern=$(sudo dmidecode -s baseboard-serial-number)
+build=$(sudo dmidecode -s bios-version)
+bk=${board%-*}
+echo This is: ${bk}\#${build}-${now}
+# echo ${bk}-${sern}-${now}
+
+cd $HOME/TEST
+echo
+echo "*** Test menu ***"
+echo
+echo "m) This help"
+echo "se5) EKF SE5 Test Menu"
+#echo "q) quit"
+echo "rt) reboot Dauer Test"
+echo "pt) powercycle Dauer Test"
+echo "r) reboot"
+echo "s) shutdown/poweroff"
+echo "con) goto console tty1"
+echo "gui) start gnome with terminal"
+echo "g) generate new live-image and test with kvm"
+echo "c) start calamaris installer"
+echo "gt) generate new tar file for test menu"
+echo "cl) clear harddisk and generate new user"
+echo "tostick) copy iso to usb stick"
+echo "update) solve problems with apt update"
+echo "stv) start virtuelle test Umgebung mit UEFI"
+#echo "h) halt"
+cp $HOME/TEST/test4me-menu $HOME/autostart.dir/500-starttest
+bash 

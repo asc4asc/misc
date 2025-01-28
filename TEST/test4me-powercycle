@@ -1,0 +1,10 @@
+#!/bin/bash
+cd $HOME/TEST
+
+readonly SLEEP4USER=5
+readonly WAIT4USER=5
+readonly LEN_OFF_POWERCYCLE=20 # powercycle
+
+echo "Use CTRL D to leave the shell"  
+read -t $WAIT4USER -p "Use 2*<return> key to start a shell or CTRL C to break." && bash 
+sudo rtcwake -s ${LEN_OFF_POWERCYCLE} -m off  

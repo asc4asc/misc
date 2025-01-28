@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+echo "Use CTRL D to leave the shell"  
+read -t 3 -p "Use 2*<return> key to start a shell or CTRL C to break." && bash 
+
+# export PATH=$PATH":."
+cd $HOME/TEST/SE5
+echo 
+$HOME/TEST/SE5/m
+echo 
+bash

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd $HOME
+# kvm -cdrom live-gnome4term-toram-bookworm-EKF.iso -m 4G -hdd tdrive.img -boot c 
+kvm -bios /usr/share/ovmf/OVMF.fd -cdrom live-gnome4term-toram-bookworm-EKF.iso -m 4G -hdd tdrive.img -boot c 
+#kvm --boot loader /usr/share/ovmf/OVMF.fd,loader.readonly=yes,loader.type=pflash,nvram=/^ -cdrom live-gnome4term-toram-bookworm-EKF.iso -m 4G -hdd tdrive.img -boot c 
+

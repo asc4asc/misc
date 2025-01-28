@@ -1,0 +1,6 @@
+#!/bin/bash
+set-gnome-classic ;set-gnome-simple
+sudo systemctl disable gdm.service
+# && sudo systemctl stop gdm.service
+sudo make-auto-login-console ekf 
+add2profile

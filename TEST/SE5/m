@@ -1,0 +1,10 @@
+echo "*** SE5 Test menu ***"
+
+echo "t) Simple test hd"
+echo "m) This help"
+echo "q) quit"
+echo "r) reboot"
+echo "s) shutdown"
+echo "h) halt"
+
+

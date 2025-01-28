@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo rm /etc/kernel/postinst.d/initramfs-tools 
+sudo rm /etc/kernel/postinst.d/z50-raspi-firmware
+sudo rm /etc/initramfs/post-update.d/z50-raspi-firmware
+sudo apt upgrade

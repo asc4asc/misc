@@ -1,0 +1,5 @@
+#!/bin/bash
+cd $HOME/TEST
+export PATH=${PATH}:.
+$HOME/TEST/m
+bash

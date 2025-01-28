@@ -1,0 +1,45 @@
+#!/bin/bash
+readonly DRIVE=sda
+readonly PART=2
+#
+#find device sd-card 16MB 
+lsblk 
+
+read -p "Ist ${DRIVE} das das passende Device? : Nur dann <RETURN>"
+umount /dev/${DRIVE}${PART} 
+
+sudo parted /dev/${DRIVE} -s mklabel gpt
+sudo parted /dev/${DRIVE} -s mkpart primary fat32 0 5% 
+sudo parted /dev/${DRIVE} -s mkpart primary ext4 5% 40%
+sync
+# sleep 3
+sudo parted /dev/${DRIVE} -s set 2 esp on
+sudo mkfs.ext4 /dev/${DRIVE}${PART} -qF
+sudo e2label /dev/${DRIVE}${PART} ROOT
+sudo mkfs.vfat /dev/${DRIVE}1 
+sudo mount /dev/${DRIVE}${PART} /mnt
+sudo debootstrap stable /mnt
+sudo mount -t proc proc /mnt/proc
+sudo mount -t sysfs /sys /mnt/sys
+sudo mount --bind /dev /mnt/dev
+sudo mount --bind /dev/pts /mnt/dev/pts
+sudo cp chroot.cmd /mnt/usr/local/sbin
+sudo chroot /mnt chroot.cmd
+sudo umount /mnt/proc
+sudo umount /mnt/sys
+sudo umount /mnt/dev
+sudo umount /mnt/dev/pts
+sudo umount /dev/${DRIVE}${PART}
+
+lsblk 
+sudo fdisk -l /dev/${DRIVE}
+
+#  mount /media/ekf/Debian\ stable\ 20230809-11\:26/live/filesystem.squashfs /mnt
+#  mkdir /mnt1
+#  mount /dev/sda1 /mnt1/
+#  cp -xrf /mnt /mnt1
+#  umount /mnt1
+#  mount /dev/sda2 /mnt1/
+#  cp /mnt/vmlinuz /mnt1/
+#  cp /mnt/initrd.img /mnt1/
+

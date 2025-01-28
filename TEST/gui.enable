@@ -1,0 +1,3 @@
+#!/bin/bash
+cp $HOME/TEST/100-startgui $HOME/autostart.dir/500-starttest
+sudo systemctl start gdm.service   

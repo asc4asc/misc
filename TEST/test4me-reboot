@@ -1,0 +1,7 @@
+#!/bin/bash
+cd $HOME/TEST
+readonly WAIT4USER=5
+
+echo "Use CTRL D to leave the shell"  
+read -t $WAIT4USER -p "Use 2*<return> key to start a shell or CTRL C to break." && bash 
+sudo reboot;

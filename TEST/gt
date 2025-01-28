@@ -1,0 +1,4 @@
+#!/bin/bash 
+
+cd $HOME
+tar -czf DATA/TEST.tar TEST

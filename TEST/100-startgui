@@ -1,0 +1,10 @@
+#!/bin/bash
+
+case $(tty) in
+/dev/tty1)
+  sudo systemctl start gdm.service  
+  ;;
+*)
+  $HOME/TEST/m
+  ;;
+esac

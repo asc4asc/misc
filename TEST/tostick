@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp $HOME/live-gnome4term-toram-bookworm-EKF.iso /media/ekf/Ventoy/live.iso && sync
+umount /media/ekf/Ventoy/
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo rm -R /etc/skel/DATA
+sudo rm -R /etc/skel/bin
+sudo rm -R /etc/skel/.bash_history
+sudo rm -R /etc/skel/.config
+sudo rm -R /etc/skel/autostart.dir
+sudo rm /etc/sudoers.d/10-installer 
+# sudo rm /etc/sudoers.d/ekf4testing
+
+sudo adduser tes --disabled-password --quiet --comment ""
+sudo usermod -p '$y$j9T$yxnR02.EjkaQ2SFmYAXZY0$6i1YTWEgWEMsWeteNj84Pon7AholbLN2rZLQnb85et7' tes

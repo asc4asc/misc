@@ -1,0 +1,17 @@
+#!/bin/bash
+sudo qemu-img create -f qcow2 ../tdrive.img 20G
+sudo kvm \
+  -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.fd \
+  -drive if=pflash,format=raw,file=/usr/share/OVMF/OVMF_VARS.fd \
+  -m 4G \
+  -cdrom ../live-gnome4term-toram-bookworm-EKF.iso \
+  -hdd ../tdrive.img \
+  -boot d
+  
+# -cdrom /path/to/the/iso/file \
+# -drive file=/path/to/the/file/disk.img/,format=qcow2 \ 
+
+# kvm -cdrom live-gnome4term-toram-bookworm-EKF.iso -m 4G -hdd tdrive.img -boot d
+
+#/usr/bin/qemu-system-x86_64 -blockdev {"driver":"file","filename":"/usr/share/OVMF/OVMF_CODE_4M.ms.fd","node-name":"libvirt-pflash0-storage","auto-read-only":true,"discard":"unmap"} -blockdev {"node-name":"libvirt-pflash0-format","read-only":true,"driver":"raw","file":"libvirt-pflash0-storage"} -blockdev {"driver":"file","filename":"/var/lib/libvirt/qemu/nvram/debiantesting-2_VARS.fd","node-name":"libvirt-pflash1-storage","auto-read-only":true,"discard":"unmap"} -blockdev {"node-name":"libvirt-pflash1-format","read-only":false,"driver":"raw","file":"libvirt-pflash1-storage"} 
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+export PATH=$PATH":."
+cp se5-test $HOME/autostart.dir/500-starttest
+cd SE5
+m
+bash
