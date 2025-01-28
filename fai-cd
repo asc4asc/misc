@@ -11,3 +11,15 @@ fai-cd -m /srv/mirror /srv/fai-cd.iso
 Run the CD in a VM
 
 fai-kvm -n cd /srv/fai-cd.iso
+
+
+---- old ----
+Debian 10 per faime installiert dann. fai und kvm pakete installiert.
+export FAI_BASEFILEURL=https://fai-project.org/download/basefiles/ # funktioniert nicht musste basefile selbst erzeugen/downloaden. 
+/tmp filesystem nicht in fstab extra mounten. cd /srv/fai/config/basefiles ; ./mk.... -J BUSTER64  
+
+cl='AMD64,FAIBASE,DEBIAN,BUSTER64,DEMO,FAISERVER,GRUB_PC'
+sudo fai-diskimage -v -S10G --hostname faiserver -c$cl fai-server-buster64.qcow2
+sudo chown debian.debian fai-server-buster64.qcow2
+sudo fai-mk-network -i wlp6s0 demo #-P?
+fai-kvm disk fai-server-buster64.qcow2
