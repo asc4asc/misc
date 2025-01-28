@@ -6,7 +6,7 @@ fai-mirror -m9999  -xFAIBASE,DEFAULT,DEMO,DEBUG /srv/mirror
 
 Create the ISO image (run this as root)
 
-fai-cd -m /tmp/m1 /srv/fai-cd.iso
+fai-cd -m /srv/mirror /srv/fai-cd.iso
 
 Run the CD in a VM
 
