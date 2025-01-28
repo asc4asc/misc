@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+set -Euo pipefail #  
+# set -Eeuo pipefail # nice but does not work in the moment with exit trap. 
+
+# use with waiting for iperf, may be add a better solution with trap!
+# ns problem when use it for more than ones 
+
+IPC="192.168.100.100" # in every namespace same IPs are OK.
+IPS="192.168.100.101"
+readonly IPC IPS 
+
+# PARAM4IPERF4CLIENT="-c ${IPS} --bidir -u -b 950M"
+PARAM4IPERF4CLIENT="-c ${IPS}"
+PARAM4IPERF4SERVER="-s -1"
+readonly PARAM4IPERF4CLIENT PARAM4IPERF4SERVER
+
+INTERFACE="${0##*-*-}"
+# INTERFACE="${dev1}"
+
+SERV="${0#*-}"
+SERV="${SERV%-*}"
+
+# DESC: Usage help
+# ARGS: None
+# OUTS: None
+function script_usage() {
+    cat << EOF
+Test a local network connection as client or server with namespaces and iperf3.
+Usage:
+    -?|-h|--help               Displays this help
+    -v|--verbose               Displays verbose output (not active in the moment)
+    -s|--server                start server
+    -c|--client                start client to test
+    -i|--interface             use this interface
+
+    Example with usb to network adapter:
+
+    Server example: namespace4iperf -s -i enx00e04c68353b
+    Client example: namespace4iperf -c -i enx00e04c680a03
+EOF
+}
+
+# DESC: Parameter parser
+# ARGS: $@ (optional): Arguments provided to the script
+# OUTS: Variables indicating command-line parameters and options
+function parse_params() {
+    local param
+    while [[ $# -gt 0 ]]; do
+        param="$1"
+        shift
+        case $param in
+            -\? | -h | --help)
+                script_usage
+                exit 0
+                ;;
+            -v | --verbose)
+                verbose=true
+                ;;
+            -s | --server)
+                SERV="server" 
+                ;;
+            -c | --client)
+                SERV="client" 
+                ;;
+            -i | --interface)
+                INTERFACE=${1}
+	        shift	
+                # ip link show |grep " en" |cut -d" " -f2
+                ;;
+            *)
+                script_exit "Invalid parameter was provided: $param" 1
+                ;;
+        esac
+    done
+    # : {SERV:="server"}
+
+}
+
+# DESC: main function to test network 
+# ARGS: None
+# OUTS: None
+function test_net
+{
+NS=ns$$
+readonly NS
+
+NETMASK="24"
+readonly NETMASK 
+
+# may be set from the commandline or cmd name of the command in the future
+if [ $SERV == "client" ];
+then
+    PARAM4IPERF=${PARAM4IPERF4CLIENT}
+    IPA=${IPC}
+else
+    PARAM4IPERF=${PARAM4IPERF4SERVER}
+    IPA=${IPS}
+fi
+
+function kill_namespace()
+{
+    sleep 1 # seams to be necessary, otherwise kill does not work sometimes 
+    k1=$(ip netns pids ${NS} | xargs)
+    if [ "${k1}" != "" ] 
+    then
+        ip netns pids ${NS} | xargs kill 
+    fi
+}
+
+function close_namespace()
+{
+    sudo ip netns del ${NS}
+}
+
+    # trap close_namespace SIGINT SIGTERM ERR EXIT
+    # trap close_namespace EXIT  
+
+    sudo ip netns add ${NS}
+    sudo ip link set ${INTERFACE} netns ${NS}
+    trap close_namespace SIGINT 
+    sudo ip netns exec ${NS} ip link set ${INTERFACE} up
+    # sudo ip netns exec ${NS} dhclient
+    sudo ip netns exec ${NS} ip addr add ${IPA}/${NETMASK} dev ${INTERFACE};
+    sudo ip netns exec ${NS} ip addr
+    trap kill_namespace SIGINT 
+    echo "***** Interface *****: ${INTERFACE}" 
+    sudo ip netns exec ${NS} iperf3 ${PARAM4IPERF}
+    # [ $SERV == "client" ] && sleep infinity
+    # echo "*** Any ERRORS? ***"
+    # sudo ip netns exec ${NS} ethtool --statistics ${INTERFACE} # |grep errors
+    #if [ $SERV != "client" ];
+    #  echo  "*** End with <RETURN> ***"
+    #  read
+    #fi
+    kill_namespace
+    close_namespace
+}
+
+function main
+{
+    parse_params "$@"
+    test_net 
+}
+
+main "$@"
+
+exit 0

@@ -1,0 +1,19 @@
+board=$(sudo dmidecode -s baseboard-product-name) 
+now=$(date +"%Y-%m-%d")
+rand=$(($RANDOM %9000 + 1000))
+sern=$(sudo dmidecode -s baseboard-serial-number)
+build=$(sudo dmidecode -s bios-version)
+bk=${board%-*}
+# echo ${bk}-${sern}-${now}.BIN
+sudo progspi -r file && mv file ${bk}_${sern}_${build}_${now}_${rand}.BIN
+bash 
+cd /usr/local
+case ${bk} in
+  PC6|SC6)
+    sudo progspi -os=0 ${board%-*}UEFI.BIN
+    ;;
+  *)
+    sudo progspi ${board%-*}UEFI.BIN
+    ;;
+esac
+exit 0

@@ -1,0 +1,16 @@
+#!/bin/bash
+# use with waiting for iperf, may be add a better solution with trap!
+# ns2 problem when use it for more than ones 
+#
+INTERFACE=enp7s0 # may be set on command line in the future!
+
+ip netns add ns2
+ip link set ${INTERFACE} netns ns2
+ip netns exec ns2 ip link set ${INTERFACE} up
+ip netns exec ns2 dhclient
+ip netns exec ns2 ip addr
+ip netns exec ns2 iperf3 -s -A 1
+# read ctrl C for iperf3 
+sleep 3 # seams to be necessary, otherwise kill does not work sometimes 
+ip netns pids ns2 | xargs kill
+ip netns del ns2

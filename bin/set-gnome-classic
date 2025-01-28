@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo apt -y install gnome-flashback 
+sudo /home/ekf/bin/set-gnome-classic.help

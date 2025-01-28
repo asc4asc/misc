@@ -1,0 +1,1 @@
+echo 'ekf ALL=(ALL:ALL) NOPASSWD:ALL' > /tmp/ekf4testing && sudo cp /tmp/ekf4testing /etc/sudoers.d

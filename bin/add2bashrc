@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cat >> ${HOME}/.profile << 'EOF' # 
+case $(tty) in
+/dev/tty1)
+  run-parts autostart.dir
+  ;;
+*)
+  ;;
+esac
+EOF

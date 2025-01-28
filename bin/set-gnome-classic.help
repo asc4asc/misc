@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function set-gnome-classic
+{
+cat > /var/lib/AccountsService/users/ekf << EOF
+[User]
+Session=gnome-classic
+Icon=/home/ekf/.face
+SystemAccount=false
+EOF
+return 0
+}
+
+set-gnome-classic
