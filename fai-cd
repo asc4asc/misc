@@ -8,7 +8,7 @@ sudo apt install dosfstools
 sudo fai-mirror -cDEFAULT,AMD64,DHCPC,FAIBASE,DEBIAN,DEMO,DEBUG,FAISERVER1,GRUB_PC,LAST /srv/mirror
 
 # Create the ISO image (run this as root)
-sudo fai-cd -m /srv/mirror /srv/fai-cd.iso
+sudo fai-cd -f -m /srv/mirror /srv/fai-cd.iso
 # Run the CD in a VM
 # fai-kvm -n cd /srv/fai-cd.iso
 
