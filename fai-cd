@@ -1,4 +1,6 @@
 #!/bin/bash
+apt install mtools
+
 ## Creating a FAI-CD ISO image
 # Create a partitial mirror containing the packages needed (16s needed)
 # sudo fai-mirror -m9999  -xDEFAULT,AMD64,DHCPC,FAIBASE,DEBIAN,DEMO,DEBUG,FAISERVER1,GRUB_PC,LAST /srv/mirror
