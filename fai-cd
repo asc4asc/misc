@@ -1,25 +1,18 @@
 ## Creating a FAI-CD ISO image
-
-Create a partitial mirror containing the packages needed (16s needed)
-
-fai-mirror -m9999  -xFAIBASE,DEFAULT,DEMO,DEBUG /srv/mirror
-
-Create the ISO image (run this as root)
-
+# Create a partitial mirror containing the packages needed (16s needed)
+fai-mirror -m9999  -xDEFAULT,AMD64,DHCPC,FAIBASE,DEBIAN,DEMO,DEBUG,FAISERVER1,GRUB_PC,LAST /srv/mirror
+# Create the ISO image (run this as root)
 fai-cd -m /srv/mirror /srv/fai-cd.iso
-
-Run the CD in a VM
-
+# Run the CD in a VM
 fai-kvm -n cd /srv/fai-cd.iso
 
+# ---- old ----
+# Debian 10 per faime installiert dann. fai und kvm pakete installiert.
+# export FAI_BASEFILEURL=https://fai-project.org/download/basefiles/ # funktioniert nicht musste basefile selbst erzeugen/downloaden. 
+# /tmp filesystem nicht in fstab extra mounten. cd /srv/fai/config/basefiles ; ./mk.... -J BUSTER64  
 
----- old ----
-Debian 10 per faime installiert dann. fai und kvm pakete installiert.
-export FAI_BASEFILEURL=https://fai-project.org/download/basefiles/ # funktioniert nicht musste basefile selbst erzeugen/downloaden. 
-/tmp filesystem nicht in fstab extra mounten. cd /srv/fai/config/basefiles ; ./mk.... -J BUSTER64  
-
-cl='AMD64,FAIBASE,DEBIAN,BUSTER64,DEMO,FAISERVER,GRUB_PC'
-sudo fai-diskimage -v -S10G --hostname faiserver -c$cl fai-server-buster64.qcow2
-sudo chown debian.debian fai-server-buster64.qcow2
-sudo fai-mk-network -i wlp6s0 demo #-P?
-fai-kvm disk fai-server-buster64.qcow2
+# cl='AMD64,FAIBASE,DEBIAN,BUSTER64,DEMO,FAISERVER,GRUB_PC'
+# sudo fai-diskimage -v -S10G --hostname faiserver -c$cl fai-server-buster64.qcow2
+# sudo chown debian.debian fai-server-buster64.qcow2
+# sudo fai-mk-network -i wlp6s0 demo #-P?
+# fai-kvm disk fai-server-buster64.qcow2
