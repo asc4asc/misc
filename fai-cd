@@ -1,7 +1,9 @@
 #!/bin/bash
 ## Creating a FAI-CD ISO image
 # Create a partitial mirror containing the packages needed (16s needed)
-sudo fai-mirror -m9999  -xDEFAULT,AMD64,DHCPC,FAIBASE,DEBIAN,DEMO,DEBUG,FAISERVER1,GRUB_PC,LAST /srv/mirror
+# sudo fai-mirror -m9999  -xDEFAULT,AMD64,DHCPC,FAIBASE,DEBIAN,DEMO,DEBUG,FAISERVER1,GRUB_PC,LAST /srv/mirror
+sudo fai-mirror -xDEFAULT,AMD64,DHCPC,FAIBASE,DEBIAN,DEMO,DEBUG,FAISERVER1,GRUB_PC,LAST /srv/mirror
+
 # Create the ISO image (run this as root)
 sudo fai-cd -m /srv/mirror /srv/fai-cd.iso
 # Run the CD in a VM
