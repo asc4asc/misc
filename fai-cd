@@ -1,6 +1,6 @@
 #!/bin/bash
-apt install mtools
-apt install dosfstools
+sudo apt install mtools
+sudo apt install dosfstools
 
 ## Creating a FAI-CD ISO image
 # Create a partitial mirror containing the packages needed (16s needed)
