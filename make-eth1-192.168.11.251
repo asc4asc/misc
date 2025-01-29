@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+t1=tmp$$eth
+
+arrIN=(${0//-/ })
+net=${arrIN[1]} 
+ip=${arrIN[2]} 
+# echo iface: $net with: $ip
+
+cat > /tmp/${t1} << EOF
+auto ${net}
+iface ${net} inet static
+address ${ip}/24
+EOF
+
+sudo cp /tmp/${t1} /etc/network/interfaces.d/${net} 
+
+
