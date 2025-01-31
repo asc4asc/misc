@@ -1,1 +1,2 @@
-git clone git@github.com:asc4asc/menu.git
+#!/bin/bash
+git clone https://github.com:asc4asc/menu.git
