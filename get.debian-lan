@@ -1,3 +1,3 @@
 #!/bin/bash
 # git clone https://salsa.debian.org/andi/debian-lan-ansible
-git clone git clone https://salsa.debian.org/andi/debian-lan-ansible
+git clone https://github.com/asc4asc/debian-lan.git
