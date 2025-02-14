@@ -37,6 +37,7 @@ if [[ -n $active_interface ]]; then
         hostname=$(generate_hostname $ip_address)
         set_hostname $hostname
         echo "Hostname set to: $hostname"
+        sudo service networking restart
     else
         echo "Could not retrieve IP address."
     fi
