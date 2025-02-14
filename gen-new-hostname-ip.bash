@@ -34,7 +34,7 @@ active_interface=$(get_active_ethernet_interface)
 if [[ -n $active_interface ]]; then
     ip_address=$(get_ip_address $active_interface)
     if [[ -n $ip_address ]]; then
-        hostname=$(generate_hostname($ip_address))
+        hostname=$(generate_hostname $ip_address)
         set_hostname $hostname
         echo "Hostname set to: $hostname"
     else
