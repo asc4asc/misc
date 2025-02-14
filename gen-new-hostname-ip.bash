@@ -3,7 +3,7 @@
 # Function to get the active Ethernet interface
 get_active_ethernet_interface() {
     for interface in $(ls /sys/class/net/); do
-        if [[ $(cat /sys/class/net/$interface/operstate) == "up" && $(cat /sys/class/net/$interface/speed 2>/dev/null) -gt 0 ]]; then
+        if [[ $(cat /sys/class/net/$interface/operstate) == "up" ]]; then
             echo $interface
             return
         fi
