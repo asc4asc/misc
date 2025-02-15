@@ -12,10 +12,23 @@
         mac: "00:00:00:00:00:02"
 
   tasks:
-  - name: Print data server
-    ansible.builtin.debug:
-      var: inst_blocks['installbox']['ip']
-  - name: Print data server
-    ansible.builtin.debug:
-      var: inst_blocks['installbox2']['mac']
+    - name: Print data server
+      ansible.builtin.debug:
+        var: inst_blocks['installbox']['ip']
+    - name: Print data server
+      ansible.builtin.debug:
+        var: inst_blocks['installbox2']['mac']
+    - name: Echo inventory_hostname
+      ansible.builtin.debug:
+        msg:
+        - "Hello from Ansible playbook!"
+        - "This is running as inventory {{ inventory_hostname }}"
+        - "His name is {{ ansible_hostname }}"
 
+    - name: Echo message and connection type
+      ansible.builtin.shell: "echo 'Connection type: {{ ansible_connection }}'"
+      register: echo_output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ echo_output.stdout_lines }}"
