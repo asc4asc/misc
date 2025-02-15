@@ -1,0 +1,21 @@
+---
+- name: Example Simple Variable
+  hosts: all
+  become: yes
+  vars:
+    inst_blocks:
+      installbox:
+        ip: "172.31.0.0/16"
+        mac: "00:00:00:00:00:01"
+      installbox2:
+        ip: "10.0.0.0/24"
+        mac: "00:00:00:00:00:02"
+
+  tasks:
+  - name: Print data server
+    ansible.builtin.debug:
+      var: inst_blocks['installbox']['ip']
+  - name: Print data server
+    ansible.builtin.debug:
+      var: inst_blocks['installbox2']['mac']
+
