@@ -1,0 +1,9 @@
+---
+ - name: "Example of dynamic groups"
+   hosts: localhost
+   vars:
+     - target_host: smtp
+     - smtp_host: smtp.max.com
+   tasks:
+     - name: testing
+       debug: msg={{ lookup('vars', target_host + '_host') }}

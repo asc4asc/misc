@@ -1,0 +1,13 @@
+hamm:
+  hosts:
+    installbox:
+      ipaddr_lan: 192.168.0.10/24
+      dhcp_start: 192.168.0.50
+      dhcp_stop: 192.168.0.150
+      in_inventory: 192.168.0.[50:150]
+    installbox2:
+      ipaddr_lan: 192.168.1.10/24
+      dhcp_start: 192.168.1.50
+      dhcp_stop: 192.168.1.150
+      in_inventory: 192.168.1.[50:150]
+
