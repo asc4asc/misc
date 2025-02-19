@@ -29,12 +29,3 @@ if [[ -f /this_is_a_test_install ]]; then
 else
     echo "The file 'this_is_a_test_install' does not exist in the root directory."
 fi
-
-# Check if the file 'this_is_a_test_install' exists in the root directory
-if [[ -f /this_is_a_test_install ]]; then
-    # Display the hard disk where the boot device is placed
-    boot_device=$(lsblk -no PKNAME $(findmnt -no SOURCE /boot))
-    echo "The boot device is located on the hard disk: $boot_device"
-else
-    echo "The file 'this_is_a_test_install' does not exist in the root directory."
-fi
