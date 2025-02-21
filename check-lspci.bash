@@ -7,7 +7,7 @@ timestamp=$(date +"%Y%m%d_%H%M%S")
 output_file="hardware_check_$timestamp.txt"
 
 # Run lspci and save the output to the file
-lspci > "$output_file"
+sudo lspci -vvv > "$output_file"
 
 # Check for duplicate files and keep only the oldest one
 for file in hardware_check_*.txt; do
