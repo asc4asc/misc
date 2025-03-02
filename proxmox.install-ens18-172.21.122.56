@@ -11,6 +11,7 @@ cat > /tmp/${t1} << EOF
 auto ${net}
 iface ${net} inet static
 address ${ip}/24
+gataway 172.21.122.1
 EOF
 
 sudo cp /tmp/${t1} /etc/network/interfaces.d/${net} 
