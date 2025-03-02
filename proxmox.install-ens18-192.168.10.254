@@ -41,19 +41,15 @@ sudo wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O 
 
 read
 
-apt update && apt full-upgrade
+apt update && apt -y full-upgrade
 
 read
 
-apt install proxmox-default-kernel
+apt install -y proxmox-default-kernel
 
 read
 
-systemctl reboot
-
-read
-
-apt install proxmox-ve postfix open-iscsi chrony
+apt install -y proxmox-ve postfix open-iscsi chrony
 
 read
 
