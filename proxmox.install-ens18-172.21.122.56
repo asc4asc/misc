@@ -17,7 +17,7 @@ sudo cp /tmp/${t1} /etc/network/interfaces.d/${net}
 
 cat  >/etc/hosts << EOF
 127.0.0.1       localhost
-$(ip) prox4m1.proxmox.com prox4m1
+${ip} prox4m1.proxmox.com prox4m1
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
