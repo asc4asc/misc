@@ -28,7 +28,7 @@ EOF
 echo check 
 hostname --ip-address
 
-hostnamectl hostnsme prox4m1.proxmox.com
+hostnamectl hostname prox4m1.proxmox.com
 
 read
 
