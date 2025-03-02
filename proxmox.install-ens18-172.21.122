@@ -7,16 +7,16 @@ net=${arrIN[1]}
 ip=${arrIN[2]} 
 echo iface: $net with: $ip
 
-cat > /tmp/${t1} << EOF
-auto br0
-iface br0 inet static
+cat >>  /etc/network/interfaces << EOF
+auto vmbr0
+iface vmbr0 inet static
         address ${ip}.56/24
         gateway ${ip}.1
         bridge_ports ${net}
         up /usr/sbin/brctl stp br0 on
 EOF
 
-sudo cp /tmp/${t1} /etc/network/interfaces.d/${net} 
+# sudo cp /tmp/${t1} /etc/network/interfaces.d/${net} 
 
 cat  >/etc/hosts << EOF
 127.0.0.1       localhost
