@@ -1,7 +1,25 @@
 #!/bin/bash
-cat  <<'EOF' >/etc/hosts
+
+#!/usr/bin/env bash
+
+t1=tmp$$eth
+
+arrIN=(${0//-/ })
+net=${arrIN[1]} 
+ip=${arrIN[2]} 
+# echo iface: $net with: $ip
+
+cat > /tmp/${t1} << EOF
+auto ${net}
+iface ${net} inet static
+address ${ip}/24
+EOF
+
+sudo cp /tmp/${t1} /etc/network/interfaces.d/${net} 
+
+cat  <<EOF >/etc/hosts
 127.0.0.1       localhost
-192.168.15.77   prox4m1.proxmox.com prox4m1
+$(ip) prox4m1.proxmox.com prox4m1
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
