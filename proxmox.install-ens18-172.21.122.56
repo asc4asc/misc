@@ -15,7 +15,7 @@ EOF
 
 sudo cp /tmp/${t1} /etc/network/interfaces.d/${net} 
 
-cat  >/etc/hosts << "EOF" 
+cat  >/etc/hosts << EOF
 127.0.0.1       localhost
 $(ip) prox4m1.proxmox.com prox4m1
 
@@ -27,6 +27,8 @@ EOF
 
 echo check 
 hostname --ip-address
+
+hostnamectl hostnsme prox4m1.proxmox.com
 
 read
 
