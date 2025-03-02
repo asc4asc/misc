@@ -8,10 +8,12 @@ ip=${arrIN[2]}
 echo iface: $net with: $ip
 
 cat > /tmp/${t1} << EOF
-auto ${net}
-iface ${net} inet static
-address ${ip}/24
-gataway 172.21.122.1
+auto br0
+iface br0 inet static
+        address ${ip}.56/24
+        gateway ${ip}.1
+        bridge_ports ${net}
+        up /usr/sbin/brctl stp br0 on
 EOF
 
 sudo cp /tmp/${t1} /etc/network/interfaces.d/${net} 
