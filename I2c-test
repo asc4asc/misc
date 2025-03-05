@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+sudo modprobe i2c-dev
+SMBus=$(sudo i2cdetect -l |grep smbus|cut -d'-' -f2|cut  -f1)
+echo "Test start:"
+while true; do
+  sudo i2cset -y ${SMBus} 0x2E 0xa0 0x80 b # LED
+  # sudo i2cset -y ${SMBus} 0x2E 0xa0 0x04 b # Watchdog
+  sleep 0.01
+  sudo i2cset -y ${SMBus} 0x2E 0xa0 0x00 b 
+  sleep 0.01
+done
+
+# More for Info?
+# https://wiki/mediawiki/index.php/Benutzer:Asc/Linux/I2C
+# i2cdetect -l                   # Show I2C busses
+# i2cdetect -r -y 2              # Show addresses of available I2C devices on bus 2 (Synopsys DesignWare I2C adapter)
+# i2cset -y 2 0x75 0x02          # Activate I2C switch of the SPX at address 0x75 (Slot where the SPX is inserted)
+# i2cget -y 2 0x3d 0x00          # Read out the I/O port of the SPX
