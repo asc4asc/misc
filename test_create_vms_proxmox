@@ -1,0 +1,24 @@
+#!/bin/bash
+# Basic VM Info
+DISK_STORAGE="local-lvm"
+MEMORY=4096
+INTERFACE="vmbr1"
+
+for ID in {10..14}; do
+  VMID=2${ID}
+  MAC=BC:24:11:00:00:${ID}
+  NAME="BatchVM${VMID}"
+
+  # Create VM
+  qm create $VMID --name $NAME --memory $MEMORY --cores 2 --sockets 1 --net0 virtio=${MAC},bridge=vmbr1 --boot order="scsi0;net0" --scsi0 local-lvm:32
+  # Start VM
+  qm start $VMID
+done
+
+echo "OK generated now remove <RETURN>" ; read
+
+for ID in {10..14}; do
+  VMID=2${ID}
+  qm stop $VMID
+  qm destroy $VMID
+done
